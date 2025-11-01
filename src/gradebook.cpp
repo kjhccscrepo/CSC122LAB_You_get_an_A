@@ -64,7 +64,7 @@ void gradebook::addStudent(student *student_to_add) {
     }
 }
 
-void gradebook::addStudent(student student_to_add) {
+void gradebook::addStudent(student &student_to_add) {
     addStudent(&student_to_add);
 }
 

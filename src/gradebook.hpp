@@ -16,7 +16,7 @@ public:
     void sort_by_Score();
     void sort_by_ID();
     void addStudent(student *student_to_add);
-    void addStudent(student student_to_add);
+    void addStudent(student &student_to_add);
     std::string displayGrades() const;
     friend std::ostream& operator<<(std::ostream &os, const gradebook &myBook);
 };

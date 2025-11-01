@@ -17,7 +17,8 @@
 
 # A note on IDs
     you can use the included class "ID_maker" to generate an ID.
-    simply delclare it like ID_maker maker. Then call it in the construction of a student object.
+    simply delclare it like ID_maker maker. 
+    Then call it in the construction of a student object.
     like so, 
     student student_obj("full name", maker.generateID);
     Do note, you can still just define your own ID's per student.
@@ -36,7 +37,8 @@
     std::cout << my_gradebook << std::endl;
 
 # Changing the ways it sorts the report cards
-    You can change the way student are sorted and printed by using the sort_by_XXXXX functions before printing the report cards.
+    You can change the way student are sorted and printed by using the 
+    sort_by_XXXXX functions before printing the report cards.
     The following are the methods, and a brief description of what they do.
     my_gradebook.sort_by_lastName();
         this sorts the students by thier last name.

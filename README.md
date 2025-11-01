@@ -1,36 +1,47 @@
-# You Get an A (C++)
+## You Get an A (C++)
+# A code-based console printer gradebook (for csc122)
 
-You can find the instructions for this lab at [More Than Equations][more-than-equations]. Create a new repository on GitHub to house your code. Be sure to make the repository public so that I can view and grade it.
+## How to use
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-We will use [CMake][cmake] to build executables (e.g. tests, the driver program, the benchmarks, etc.). Additionally, we will use [Catch2][catch2] for unit testing and benchmarking.
+# How to make a gradebook
+    gradebook myGradebookName;
+    don't forget to add students that you make to it with,
+    myGradebookName.addStudent(studentObj);
 
-## Building Executables With CMake
+# How to make a student
+    student student_object_name("Full Student Name", "ID number string");
 
-You can use CMake to compile and build the executables for the project. First, you need to create a `build/` directory in the project. The build directory will house all of the compiled files as well as the `Makefile` for the project. Note that we do NOT check the `build/` directory into version control since each person will have to regenerate the executables on their own machine.
+# How to make an assignment
+    assignment assignment_object_name("Full Assignment Name", int total points);
 
-```bash
-mkdir build
-cd build
-```
+# A note on IDs
+    you can use the included class "ID_maker" to generate an ID.
+    simply delclare it like ID_maker maker. Then call it in the construction of a student object.
+    like so, 
+    student student_obj("full name", maker.generateID);
+    Do note, you can still just define your own ID's per student.
 
-Once you are inside of the build directory, you can run the following command to build all of the executables for the project:
+# How to grade an assignment
+    grading an assignment is currently scoped to the student class, you can do it two ways.
+    student_obj.grade_assignment(assignment_obj, int points earned);
+    or you can add the assignment to the student like this
+    student_obj.addAssignment(assignment_obj);  then grade it either like this again,
+    student_obj.grade_assignment(assignment_obj, int points earned);
 
-```bash
-cmake .. && make
-```
+# Printing report cards
+    A report card can be printed two ways. You can call the method directly...
+    std::cout << my_gradebook.displayGrades() << std::endl;
+    or, you can just print the gradebook, as the class has the << operator overloaded!
+    std::cout << my_gradebook << std::endl;
 
-## Testing the App
-
-Any tests that you define in the `tests/` directory must have a corresponding entry in `CMakeLists.txt`. After you build executables using CMake, you can run the corresponding test files from within the `build/` directory.
-
-## Running the App
-
-The `main.cpp` file at the root of the project must have a corresponding entry in `CMakeLists.txt`. After you build executables using CMake, you can run the driver program from within the `build/` directory.
-
-## Running Benchmarks
-
-Benchmarking is provided with Catch2. You can write benchmarking assertions alongside test assertions right in your test files.
-
-[catch2]: https://github.com/catchorg/Catch2
-[cmake]: https://cmake.org/
-[more-than-equations]: https://morethanequations.com/Computer-Science/Labs/You-Get-an-A
+# Changing the ways it sorts the report cards
+    You can change the way student are sorted and printed by using the sort_by_XXXXX functions before printing the report cards.
+    The following are the methods, and a brief description of what they do.
+    my_gradebook.sort_by_lastName();
+        this sorts the students by thier last name.
+    my_gradebook.sort_by_Score();
+        this sorts the students by thier current grade in the class.
+    my_gradebook.sort_byID();
+        this sorts the students by thier IDs.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
